@@ -17,12 +17,8 @@ pipeline {
 
         stage('INSTALL') {
             steps {
-               script {
-            def command = 'npm install'
-            def diagnostics = "-Dorg.jenkinsci.plugins.durabletask.BourneShellScript.LAUNCH_DIAGNOSTICS=true"
-            sh "JENKINS_SERVER_COOKIE=$diagnostics $command"
-        }
-                println 'Installing dependencies...'
+               sh 'npm install'
+               println 'Installing dependencies...'
             }
         }
 
