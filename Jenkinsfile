@@ -13,11 +13,11 @@ pipeline {
             }
         }
 
-        stage('Install Netlify CLI') {
-            steps {
-                sh 'npm install -g netlify-cli'
-                println 'Installing Netlify CLI...'
-            }
+       stage('Install Netlify CLI') {
+        steps {
+        sh 'npm install netlify-cli'
+        println 'Installing Netlify CLI locally...'
+         }
         }
 
         stage('Login to Netlify') {
