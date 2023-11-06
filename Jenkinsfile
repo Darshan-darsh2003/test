@@ -4,6 +4,8 @@ pipeline {
     environment {
        NETLIFY_AUTH_TOKEN = credentials('api-key')
        YOUR_NETLIFY_SITE_ID=credentials('YOUR_NETLIFY_SITE_ID')
+       PATH="./node_modules/.bin/netlify"
+
     }
 
     stages {
@@ -16,14 +18,14 @@ pipeline {
        stage('Install Netlify CLI') {
         steps {
             tool name: 'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-            sh 'npm install netlify-cli -g' 
+            sh 'npm install netlify-cli' 
             println 'Installing Netlify CLI locally...'
          }
         }
 
         stage('Login to Netlify') {
             steps {
-                sh 'netlify login -t $NETLIFY_AUTH_TOKEN' // Use the environment variable
+                sh '$PATH login -t $NETLIFY_AUTH_TOKEN'
                 println 'Logging in to Netlify...'
             }
         }
