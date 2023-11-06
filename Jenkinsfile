@@ -4,7 +4,7 @@ pipeline {
     environment {
        NETLIFY_AUTH_TOKEN = credentials('api-key')
        YOUR_NETLIFY_SITE_ID=credentials('YOUR_NETLIFY_SITE_ID')
-       PATH="./node_modules/.bin/netlify"
+       NETLIFY_PATH="./node_modules/.bin/netlify"
 
     }
 
@@ -16,13 +16,9 @@ pipeline {
         }
          stage('Debug') {
             steps {
-                        script {
-            def command = 'echo $PATH'  
-            def diagnostics = "-Dorg.jenkinsci.plugins.durabletask.BourneShellScript.LAUNCH_DIAGNOSTICS=true"
-            sh "JENKINS_SERVER_COOKIE=$diagnostics $command"
-        }
+                sh 'echo $NETLIFY_PATH'  
+                sh 'which sh'   // Print the NETLIFY_path to the shell
             }
-                // sh 'which sh'   // Print the path to the shell
             
         }
 
@@ -37,7 +33,7 @@ pipeline {
 
         stage('Login to Netlify') {
             steps {
-                sh '$PATH login -t $NETLIFY_AUTH_TOKEN'
+                sh '$NETLIFY_PATH login -t $NETLIFY_AUTH_TOKEN'
                 println 'Logging in to Netlify...'
             }
         }
