@@ -1,10 +1,29 @@
 pipeline {
     agent any
 
+    environment {
+       NETLIFY_AUTH_TOKEN = credentials('api-key')
+       YOUR_NETLIFY_SITE_ID=credentials('YOUR_NETLIFY_SITE_ID')
+    }
+
     stages {
         stage('GIT CHECKOUT') {
             steps {
                git branch: 'main', changelog: false, credentialsId: 'f3c3787a-003f-41d5-92dc-1adb251a041f', poll: false, url: 'https://github.com/Darshan-darsh2003/test.git'
+            }
+        }
+
+        stage('Install Netlify CLI') {
+            steps {
+                sh 'npm install -g netlify-cli'
+                println 'Installing Netlify CLI...'
+            }
+        }
+
+        stage('Login to Netlify') {
+            steps {
+                sh 'netlify login -t $NETLIFY_AUTH_TOKEN' // Use the environment variable
+                println 'Logging in to Netlify...'
             }
         }
 
@@ -18,7 +37,6 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Build your React application
                 sh 'npm run build'
                 println 'Building Application...'
             }
@@ -26,8 +44,14 @@ pipeline {
 
         stage('Test') {
             steps {
-                // Run tests (e.g., using Jest)
                 sh 'npm test'
+            }
+        }
+
+        stage('Deploy to Netlify') {
+            steps {
+                sh 'netlify deploy --site $YOUR_NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir ./build'
+                println 'Deploying to Netlify...'
             }
         }
     }
