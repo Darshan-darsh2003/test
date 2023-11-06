@@ -15,12 +15,12 @@ pipeline {
             }
         }
 
-       stage('Install Netlify CLI') {
-        steps {
-            // tool name: 'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-            sh 'npm install netlify-cli' 
-            println 'Installing Netlify CLI locally...'
-         }
+        stage('INSTALL') {
+            steps {
+                tool name: 'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+                sh 'npm install'
+                println 'Installing dependencies...'
+            }
         }
 
         stage('Login to Netlify') {
@@ -30,13 +30,7 @@ pipeline {
             }
         }
 
-        stage('INSTALL') {
-            steps {
-                tool name: 'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-                sh 'npm install'
-                println 'Installing dependencies...'
-            }
-        }
+
 
         stage('Build') {
             steps {
