@@ -1,24 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+
+  const handleDecrement = () => {
+    setCount(count - 1);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div className="App-header">
+        <h2>SIMPLE REACT TEST</h2>
+      </div>
+      <p className="App-intro">
+        The state is <b>{count}</b>
+      </p>
+      <div
+        style={{
+          display: "flex",
+          gap: "20px",
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <button
+          style={{
+            width: "100px",
+            height: "60px",
+            outline: "none",
+            borderRadius: "10px",
+            color: "#000",
+          }}
+          onClick={handleDecrement}
         >
-          Learn React
-        </a>
-      </header>
+          Decrement -
+        </button>
+        <button
+          style={{
+            width: "100px",
+            height: "60px",
+            outline: "none",
+            borderRadius: "10px",
+            color: "#000",
+          }}
+          onClick={handleIncrement}
+        >
+          Increment +
+        </button>
+      </div>
     </div>
   );
 }
