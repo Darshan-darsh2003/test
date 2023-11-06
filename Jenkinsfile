@@ -16,8 +16,13 @@ pipeline {
         }
          stage('Debug') {
             steps {
-                sh 'echo $PATH' // Print the PATH environment variable
-                sh 'which sh'   // Print the path to the shell
+                        script {
+            def command = 'echo $PATH'  
+            def diagnostics = "-Dorg.jenkinsci.plugins.durabletask.BourneShellScript.LAUNCH_DIAGNOSTICS=true"
+            sh "JENKINS_SERVER_COOKIE=$diagnostics $command"
+        }
+            }
+                // sh 'which sh'   // Print the path to the shell
             }
         }
 
