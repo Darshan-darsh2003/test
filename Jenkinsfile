@@ -54,7 +54,7 @@ pipeline {
 
         stage('Deploy to Netlify') {
             steps {
-                sh 'netlify deploy --site $YOUR_NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir ./build'
+                sh '$NETLIFY_PATH deploy --site $YOUR_NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir ./build'
                 println 'Deploying to Netlify...'
             }
         }
