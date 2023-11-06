@@ -23,7 +23,7 @@ pipeline {
         }
             }
                 // sh 'which sh'   // Print the path to the shell
-            }
+            
         }
 
         stage('INSTALL') {
