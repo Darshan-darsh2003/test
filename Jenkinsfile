@@ -31,9 +31,13 @@ pipeline {
             }
         }
 
-        stage('Login to Netlify') {
+stage('Login to Netlify') {
     steps {
-        sh "${NETLIFY_PATH} login -t ${NETLIFY_AUTH_TOKEN}"
+        script {
+            withCredentials([string(credentialsId: 'netlify-auth-token', variable: 'NETLIFY_AUTH_TOKEN')]) {
+                sh "${NETLIFY_PATH} login -t $NETLIFY_AUTH_TOKEN"
+            }
+        }
         println 'Logging in to Netlify...'
     }
 }
