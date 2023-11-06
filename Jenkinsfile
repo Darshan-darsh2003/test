@@ -15,6 +15,7 @@ pipeline {
 
        stage('Install Netlify CLI') {
         steps {
+            tool name: 'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
             sh 'npm install netlify-cli -g' 
             println 'Installing Netlify CLI locally...'
          }
