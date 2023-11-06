@@ -15,8 +15,8 @@ pipeline {
 
        stage('Install Netlify CLI') {
         steps {
-        sudo sh 'npm install netlify-cli -g' 
-        println 'Installing Netlify CLI locally...'
+            sh 'npm install netlify-cli -g' 
+            println 'Installing Netlify CLI locally...'
          }
         }
 
