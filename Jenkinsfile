@@ -12,6 +12,7 @@ pipeline {
             steps {
                 tool name: 'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
                 sh 'npm install'
+                println 'Installing dependencies...'
             }
         }
 
@@ -19,6 +20,7 @@ pipeline {
             steps {
                 // Build your React application
                 sh 'npm run build'
+                println 'Building Application...'
             }
         }
 
