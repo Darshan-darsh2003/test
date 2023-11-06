@@ -17,8 +17,11 @@ pipeline {
 
         stage('INSTALL') {
             steps {
-                tool name: 'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-                sh 'npm install'
+               script {
+            def command = 'npm install'
+            def diagnostics = "-Dorg.jenkinsci.plugins.durabletask.BourneShellScript.LAUNCH_DIAGNOSTICS=true"
+            sh "JENKINS_SERVER_COOKIE=$diagnostics $command"
+        }
                 println 'Installing dependencies...'
             }
         }
