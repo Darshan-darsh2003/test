@@ -17,8 +17,10 @@ pipeline {
 
         stage('INSTALL') {
             steps {
-               sh 'npm install'
-               println 'Installing dependencies...'
+                sh 'npm --version' // Verify npm version
+                sh 'npm config list' // Check npm configuration
+                sh 'npm install'
+                println 'Installing dependencies...'
             }
         }
 
