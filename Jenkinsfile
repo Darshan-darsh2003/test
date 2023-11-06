@@ -32,11 +32,12 @@ pipeline {
         }
 
         stage('Login to Netlify') {
-            steps {
-                sh '$NETLIFY_PATH login -t $NETLIFY_AUTH_TOKEN'
-                println 'Logging in to Netlify...'
-            }
-        }
+    steps {
+        sh "${NETLIFY_PATH} login -t ${NETLIFY_AUTH_TOKEN}"
+        println 'Logging in to Netlify...'
+    }
+}
+
 
 
 
