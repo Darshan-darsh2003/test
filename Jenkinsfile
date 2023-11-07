@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:20.10.0-alpine3.10'
-        }
-    }
+    agent any
 
     environment {
        NETLIFY_AUTH_TOKEN = credentials('api-key')
