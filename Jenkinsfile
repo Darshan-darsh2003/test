@@ -1,5 +1,8 @@
 pipeline {
     agent {label 'slave-2'}
+    tools {
+        nodejs 'node'
+    }
 
     environment {
        NETLIFY_AUTH_TOKEN = credentials('api-key')
