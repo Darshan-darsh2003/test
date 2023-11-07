@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import ParentComponent from "./ParentComponent";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
+        <ParentComponent />
         <div
           className="App-header"
           style={{
