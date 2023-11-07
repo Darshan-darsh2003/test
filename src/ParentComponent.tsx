@@ -23,6 +23,27 @@ const ParentComponent = () => {
       name: "https://picsum.photos/id/240/200/300",
       description: "STAIRS",
     },
+
+    {
+      id: 5,
+      name: "https://picsum.photos/id/241/200/300",
+      description: "MOUNTAIN",
+    },
+    {
+      id: 6,
+      name: "https://picsum.photos/id/242/200/300",
+      description: "ROAD",
+    },
+    {
+      id: 7,
+      name: "https://picsum.photos/id/243/200/300",
+      description: "FOREST",
+    },
+    {
+      id: 8,
+      name: "https://picsum.photos/id/244/200/300",
+      description: "BIRD",
+    },
   ];
 
   return (
@@ -33,6 +54,8 @@ const ParentComponent = () => {
         alignItems: "center",
         padding: "20px",
         backgroundColor: "#fff",
+        // overflowX: "scroll",
+        flexWrap: "wrap",
       }}
     >
       {imageUrls.map((object) => (

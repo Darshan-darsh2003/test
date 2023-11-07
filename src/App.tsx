@@ -16,7 +16,6 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <ParentComponent />
         <div
           className="App-header"
           style={{
@@ -64,6 +63,7 @@ function App() {
             </button>
           </div>
         </div>
+        <ParentComponent />
       </div>
     </div>
   );

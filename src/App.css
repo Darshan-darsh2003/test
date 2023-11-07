@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  height: 100vh;
   display: flex;
     align-items: center;
   justify-content: center;
@@ -61,23 +60,6 @@
 
 }
 
-/* .child-component{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  border-radius: 3px;
-  box-shadow: 0 0 2px #000;
-  transition: 0.5s ease-out;
-
-} */
-
-/* .child-component:hover{
-  box-shadow: 0 0 5px #000;
-  border-radius: 1px;
-  transition: 0.3s ease-in-out;
-} */
 
 .even{
   display: flex;
