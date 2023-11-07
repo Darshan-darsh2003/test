@@ -26,7 +26,7 @@ function App() {
         </div>
         <div style={{ backgroundColor: "#fff", paddingBottom: "20px" }}>
           <p className="App-intro">
-            The state is <b style={{ fontSize: "30px" }}>{count}</b>
+            The state is <b style={{ fontSize: "40px" }}>{count}</b>
           </p>
           <div
             style={{
