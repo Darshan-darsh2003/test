@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label 'slave-2'}
 
     environment {
        NETLIFY_AUTH_TOKEN = credentials('api-key')
@@ -30,7 +30,6 @@ pipeline {
                 println 'Installing dependencies...'
             }
         }
-
         stage('Login to Netlify') {
          steps {
                 println 'Before Logging in to Netlify...'
