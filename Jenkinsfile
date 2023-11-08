@@ -33,6 +33,7 @@ pipeline {
                 sh 'npm config list' // Check npm configuration
                 sh 'npm cache clean --force' // Clear npm cache
                 sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/ast-types-flow' // Delete problematic directory
+                sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/compression' // Delete problematic directory
                 sh 'npm install' // Run npm install
                 println 'Installing dependencies...'
             }
