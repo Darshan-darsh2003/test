@@ -1,9 +1,9 @@
 pipeline {
     agent {label 'slave-2'}
     // agent any
-    tools {
-        nodejs 'node'
-    }
+    // tools {
+    //     nodejs 'node'
+    // }
 
     environment {
        NETLIFY_AUTH_TOKEN = credentials('api-key')
@@ -19,7 +19,33 @@ pipeline {
                git branch: 'main', credentialsId: '6a0bb977-d5c4-451b-a53c-c8eaa39bccb6', url: 'https://github.com/Darshan-darsh2003/test.git'
             }
         }
-         stage('Debug') {
+  
+
+        stage('INSTALL') {
+            steps {
+                tool name: 'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+                sh 'npm --version' // Verify npm version
+                sh 'npm config list' // Check npm configuration
+                sh 'npm cache clean --force' // Clear npm cache
+                // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/ast-types-flow' // Delete problematic directory
+                // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/compression' // Delete problematic directory
+                // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/babel-jest' // Delete problematic directory
+
+                sh 'npm install' // Run npm install
+                println 'Installing dependencies...'
+            }
+        }
+
+        // stage('INSTALL') {
+        //     steps {
+        //         sh 'npm --version' // Verify npm version
+        //         sh 'npm config list' // Check npm configuration
+        //         sh 'npm install'
+        //         println 'Installing dependencies...'
+        //     }
+        // }
+
+        stage('Debug') {
             steps {
                 sh 'echo $NETLIFY_PATH'  
                 sh 'which sh'   // Print the NETLIFY_path to the shell
@@ -27,28 +53,6 @@ pipeline {
             
         }
 
-        // stage('INSTALL') {
-        //     steps {
-        //         sh 'npm --version' // Verify npm version
-        //         sh 'npm config list' // Check npm configuration
-        //         sh 'npm cache clean --force' // Clear npm cache
-        //         // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/ast-types-flow' // Delete problematic directory
-        //         // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/compression' // Delete problematic directory
-        //         // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/babel-jest' // Delete problematic directory
-
-        //         sh 'npm install' // Run npm install
-        //         println 'Installing dependencies...'
-        //     }
-        // }
-
-        stage('INSTALL') {
-            steps {
-                sh 'npm --version' // Verify npm version
-                sh 'npm config list' // Check npm configuration
-                sh 'npm install'
-                println 'Installing dependencies...'
-            }
-        }
         stage('Login to Netlify') {
          steps {
                 println 'Before Logging in to Netlify...'
@@ -59,6 +63,7 @@ pipeline {
 
         stage('Build') {
             steps {
+                tool name: 'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
                 sh 'npm run build'
                 println 'Building Application...'
             }
@@ -66,6 +71,7 @@ pipeline {
 
         stage('Test') {
             steps {
+                tool name: 'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
                 sh 'npm test'
             }
         }
