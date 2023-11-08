@@ -30,7 +30,9 @@ pipeline {
                 // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/compression' // Delete problematic directory
                 // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/babel-jest' // Delete problematic directory
                 // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules'
-         
+                println 'after deleting node_modules'
+                sh 'npm config list' // Check npm configuration
+
                 // sh 'npm install' // Run npm install
                 // println 'Installing dependencies...'
             }
