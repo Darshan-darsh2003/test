@@ -34,8 +34,8 @@ pipeline {
                 sh 'npm config list' // Check npm configuration
                 sh 'ls /home/ubuntu/jenkins-slave/workspace'
                 sh 'ls /home/ubuntu/jenkins-slave/workspace/Pipeline-new'
-                // sh 'npm install' // Run npm install
-                // println 'Installing dependencies...'
+                sh 'npm install' // Run npm install
+                println 'Installing dependencies...'
             }
         }
 
