@@ -32,8 +32,8 @@ pipeline {
                 // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules'
                 println 'after deleting node_modules'
                 sh 'npm config list' // Check npm configuration
-                echo '/home/ubuntu/jenkins-slave/workspace'
-                echo '/home/ubuntu/jenkins-slave/workspace/Pipeline-new'
+                sh 'ls /home/ubuntu/jenkins-slave/workspace'
+                echo 'ls /home/ubuntu/jenkins-slave/workspace/Pipeline-new'
                 // sh 'npm install' // Run npm install
                 // println 'Installing dependencies...'
             }
