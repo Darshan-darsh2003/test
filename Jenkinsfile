@@ -23,16 +23,24 @@ pipeline {
 
         stage('INSTALL') {
             steps {
-                tool name:'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-                sh 'npm --version' // Verify npm version
-                sh 'npm config list' // Check npm configuration
-                sh 'npm cache clean --force' // Clear npm cache
-                // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/ast-types-flow' // Delete problematic directory
-                // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/compression' // Delete problematic directory
-                // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/babel-jest' // Delete problematic directory
+                    script {
+            def nodejsHome = tool name: 'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+            sh "${nodejsHome}/bin/npm --version" // Verify npm version
+            sh "${nodejsHome}/bin/npm config list" // Check npm configuration
+            sh "${nodejsHome}/bin/npm cache clean --force" // Clear npm cache
+            sh "${nodejsHome}/bin/npm install" // Run npm install
+            println 'Installing dependencies...'
+        }
+                // tool name:'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+                // sh 'npm --version' // Verify npm version
+                // sh 'npm config list' // Check npm configuration
+                // sh 'npm cache clean --force' // Clear npm cache
+                // // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/ast-types-flow' // Delete problematic directory
+                // // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/compression' // Delete problematic directory
+                // // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/babel-jest' // Delete problematic directory
 
-                sh 'npm install' // Run npm install
-                println 'Installing dependencies...'
+                // sh 'npm install' // Run npm install
+                // println 'Installing dependencies...'
             }
         }
 
