@@ -25,7 +25,7 @@ pipeline {
             steps {
                 sh 'npm --version' // Verify npm version
                 sh 'npm config list' // Check npm configuration
-                sh 'npm cache clean --force' // Clear npm cache
+                // sh 'npm cache clean --force' // Clear npm cache
                 // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/ast-types-flow' // Delete problematic directory
                 // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/compression' // Delete problematic directory
                 // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/babel-jest' // Delete problematic directory
@@ -48,40 +48,40 @@ pipeline {
         //     }
         // }
 
-        // stage('Debug') {
-        //     steps {
-        //         sh 'echo $NETLIFY_PATH'  
-        //         sh 'which sh'   // Print the NETLIFY_path to the shell
-        //     }
+        stage('Debug') {
+            steps {
+                sh 'echo $NETLIFY_PATH'  
+                sh 'which sh'   // Print the NETLIFY_path to the shell
+            }
             
-        // }
+        }
 
-        // stage('Login to Netlify') {
-        //  steps {
-        //         println 'Before Logging in to Netlify...'
-        //         sh '$NETLIFY_PATH login $NETLIFY_AUTH_TOKEN'
-        //         println 'After Logging in to Netlify...'
-        //     }
-        // }
+        stage('Login to Netlify') {
+         steps {
+                println 'Before Logging in to Netlify...'
+                sh '$NETLIFY_PATH login $NETLIFY_AUTH_TOKEN'
+                println 'After Logging in to Netlify...'
+            }
+        }
 
-        // stage('Build') {
-        //     steps {
-        //         sh 'npm run build'
-        //         println 'Building Application...'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+                println 'Building Application...'
+            }
+        }
 
-        // stage('Test') {
-        //     steps {
-        //         sh 'npm test'
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
 
-        // stage('Deploy to Netlify') {
-        //     steps {
-        //         sh '$NETLIFY_PATH deploy --site $YOUR_NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir ./build --prod'
-        //         println 'Deploying to Netlify...'
-        //     }
-        // }
+        stage('Deploy to Netlify') {
+            steps {
+                sh '$NETLIFY_PATH deploy --site $YOUR_NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir ./build --prod'
+                println 'Deploying to Netlify...'
+            }
+        }
     }
 }
