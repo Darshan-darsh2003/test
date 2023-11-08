@@ -9,7 +9,7 @@ pipeline {
        NETLIFY_AUTH_TOKEN = credentials('api-key')
        YOUR_NETLIFY_SITE_ID=credentials('YOUR_NETLIFY_SITE_ID')
        NETLIFY_PATH="./node_modules/.bin/netlify"
-
+       NODE_OPTIONS = '--max-http-header-size=65536' // Set NODE_OPTIONS to adjust header size limit
     }
 
     stages {
