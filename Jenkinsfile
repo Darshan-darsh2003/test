@@ -31,10 +31,21 @@ pipeline {
             steps {
                 sh 'npm --version' // Verify npm version
                 sh 'npm config list' // Check npm configuration
-                sh 'npm install'
+                sh 'npm cache clean --force' // Clear npm cache
+                sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/ast-types-flow' // Delete problematic directory
+                sh 'npm install' // Run npm install
                 println 'Installing dependencies...'
             }
         }
+
+        // stage('INSTALL') {
+        //     steps {
+        //         sh 'npm --version' // Verify npm version
+        //         sh 'npm config list' // Check npm configuration
+        //         sh 'npm install'
+        //         println 'Installing dependencies...'
+        //     }
+        // }
         stage('Login to Netlify') {
          steps {
                 println 'Before Logging in to Netlify...'
