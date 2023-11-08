@@ -25,12 +25,12 @@ pipeline {
             steps {
                 sh 'npm --version' // Verify npm version
                 sh 'npm config list' // Check npm configuration
-                sh 'npm cache clean --force' // Clear npm cache
+                // sh 'npm cache clean --force' // Clear npm cache
                 // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/ast-types-flow' // Delete problematic directory
                 // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/compression' // Delete problematic directory
                 // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules/babel-jest' // Delete problematic directory
                 // sh 'rm -rf /home/ubuntu/jenkins-slave/workspace/Pipeline-new/node_modules'
-                println 'after deleting node_modules'
+                // println 'after deleting node_modules'
                 sh 'npm config list' // Check npm configuration
                 sh 'ls /home/ubuntu/jenkins-slave/workspace'
                 echo 'ls /home/ubuntu/jenkins-slave/workspace/Pipeline-new'
