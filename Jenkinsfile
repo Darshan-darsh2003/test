@@ -33,7 +33,7 @@ pipeline {
                 // println 'after deleting node_modules'
                 sh 'npm config list' // Check npm configuration
                 sh 'ls /home/ubuntu/jenkins-slave/workspace'
-                echo 'ls /home/ubuntu/jenkins-slave/workspace/Pipeline-new'
+                sh 'ls /home/ubuntu/jenkins-slave/workspace/Pipeline-new'
                 // sh 'npm install' // Run npm install
                 // println 'Installing dependencies...'
             }
