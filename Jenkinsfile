@@ -23,7 +23,7 @@ pipeline {
 
         stage('INSTALL') {
             steps {
-                tool name: 'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallations'
+                tool name:'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
                 sh 'npm --version' // Verify npm version
                 sh 'npm config list' // Check npm configuration
                 sh 'npm cache clean --force' // Clear npm cache
@@ -63,7 +63,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                tool name: 'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallations'
+                tool name:'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
                 sh 'npm run build'
                 println 'Building Application...'
             }
@@ -71,7 +71,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                tool name: 'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallations'
+                tool name:'node', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
                 sh 'npm test'
             }
         }
