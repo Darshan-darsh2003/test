@@ -1,6 +1,6 @@
 pipeline {
-    agent {label 'slave-2'}
-    // agent any
+    // agent {label 'slave-2'}
+    agent any
     tools {
         nodejs 'node'
     }
